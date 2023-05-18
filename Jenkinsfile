@@ -8,6 +8,7 @@ pipeline {
     environment {
       DOCKER_REGISTRY_CREDS = credentials('AZURE_CONTAINER_REGISTRY')
     }
+    stages {
       stage("Build & Push") {
         steps {
           container('kaniko') {
@@ -19,5 +20,6 @@ pipeline {
              sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg GIT_COMMIT=$gitCommit --build-arg ARTIFACT=target/spring-boot-hello-world-lolc.jar --label org.opencontainers.image.revision=$gitCommit --destination=sharedregistry23.azurecr.io/$app_name:dev"
           }
         }		
+      }
   }
 }
