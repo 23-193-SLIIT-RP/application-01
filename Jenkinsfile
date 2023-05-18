@@ -1,6 +1,6 @@
 pipeline {
     agent {
-      gce-kubernetes {
+      kubernetes {
         defaultContainer 'maven'
         yamlFile 'KubernetesPodJava.yaml'
       }
