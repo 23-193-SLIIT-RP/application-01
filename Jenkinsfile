@@ -2,7 +2,7 @@ pipeline {
     agent {
       kubernetes {
         defaultContainer 'maven'
-        yaml libraryResource('KubernetesPodJava.yaml')
+        yamlFile 'KubernetesPodJava.yaml'
       }
     }
     environment {
