@@ -11,6 +11,11 @@ spec:
     image: jenkins/inbound-agent:latest
     command: ["/bin/sh","-c"]
     args: ["sleep 30; /usr/local/bin/jenkins-agent"]
+  - name: kaniko
+    image: gcr.io/kaniko-project/executor:debug
+    command:
+    - /busybox/cat    
+    tty: true
   - name: maven-11
     image: maven:3.6.0-jdk-11	
     command:
