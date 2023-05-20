@@ -41,22 +41,22 @@ pipeline {
         // }
         stage('clean') {
             steps {
-                sh "mvn clean -f application-01"
+                sh "mvn clean"
             }
         }
         stage('install') {
             steps {
-                sh "mvn install -f application-01"
+                sh "mvn install"
             }
         }
         stage('test') {
             steps {
-                sh "mvn test -f application-01"
+                sh "mvn test"
             }
         }
         stage('package') {
             steps {
-                sh "mvn package -f application-01"
+                sh "mvn package"
             }
         }
         stage("Build & Push") {
