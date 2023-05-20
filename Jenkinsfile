@@ -25,46 +25,36 @@
 // }
 
 pipeline {
-    agent {
-      any {
-        defaultContainer 'maven-11'
+    any {
+        defaultContainer 'maven'
         yamlFile 'KubernetesPodJava.yaml'
       }
-    }
     stages {
-        // stage('git repo') {
-        //     steps {
-        //         sh "ls -a"
-        //         sh "rm -rf application-01"
-        //         sh "git clone https://github.com/23-193-SLIIT-RP/application-01.git"
-        //     }
-        // }
+        stage('git repo') {
+            steps {
+                sh "ls -a"
+                sh "rm -rf application-01"
+                sh "git clone https://github.com/23-193-SLIIT-RP/application-01.git"
+            }
+        }
         stage('clean') {
             steps {
-              container('maven-11') {
                 sh "mvn clean -f application-01"
-              } 
             }
         }
         stage('install') {
             steps {
-              container('maven-11') {
                 sh "mvn install -f application-01"
-              }
             }
         }
         stage('test') {
             steps {
-              container('maven-11') {
                 sh "mvn test -f application-01"
-              }
             }
         }
         stage('package') {
             steps {
-              container('maven-11') {
                 sh "mvn package -f application-01"
-              }
             }
         }
     }
