@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - name: jnlp
-    image: jenkins/inbound-agent:4.3-4-jdk11
+    image: jenkins/inbound-agent:latest
     command: ["/bin/sh","-c"]
     args: ["sleep 30; /usr/local/bin/jenkins-agent"]
   - name: maven-11
