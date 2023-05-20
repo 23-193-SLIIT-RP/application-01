@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: jenkins-slave-spring-boot
-  namespace: builder-jenkins
+  namespace: jenkins
   labels:
     name: jenkins-slave-spring-boot   
 spec:
