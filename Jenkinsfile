@@ -25,9 +25,11 @@
 // }
 
 pipeline {
-    agent any
-    tools {
-        maven "maven"
+    agent {
+      any {
+        defaultContainer 'maven'
+        yamlFile 'KubernetesPodJava.yaml'
+      }
     }
     stages {
         stage('git repo') {
