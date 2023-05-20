@@ -20,7 +20,6 @@
 //             // echo "${gitCommit}"
 //             //  sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg GIT_COMMIT=$gitCommit --build-arg ARTIFACT=target/spring-boot-hello-world-lolc.jar --label org.opencontainers.image.revision=$gitCommit --destination=sharedregistry23.azurecr.io/$app_name:dev"
 //           }
-//         }		
 //       }
 //   }
 // }
@@ -33,29 +32,29 @@ pipeline {
     stages {
         stage('git repo') {
             steps {
-                bat "ls -a"
-                bat "rm -rf hello-world-sample-project-lolc"
-                bat "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
+                sh "ls -a"
+                sh "rm -rf hello-world-sample-project-lolc"
+                sh "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
             }
         }
         stage('clean') {
             steps {
-                bat "mvn clean -f hello-world-sample-project-lolc"
+                sh "mvn clean -f hello-world-sample-project-lolc"
             }
         }
         stage('install') {
             steps {
-                bat "mvn install -f hello-world-sample-project-lolc"
+                sh "mvn install -f hello-world-sample-project-lolc"
             }
         }
         stage('test') {
             steps {
-                bat "mvn test -f hello-world-sample-project-lolc"
+                sh "mvn test -f hello-world-sample-project-lolc"
             }
         }
         stage('package') {
             steps {
-                bat "mvn package -f hello-world-sample-project-lolc"
+                sh "mvn package -f hello-world-sample-project-lolc"
             }
         }
     }
