@@ -31,9 +31,11 @@ pipeline {
         yamlFile 'KubernetesPodJava.yaml'
       }
     }
+    
     environment {
       DOCKER_REGISTRY_CREDS = credentials('AZURE_CONTAINER_REGISTRY')
     }
+
     stages {
         // stage('git repo') {
         //     steps {
@@ -65,7 +67,6 @@ pipeline {
         stage("Build & Push") {
           steps {
             container('kaniko') {
-              echo "DONE"
               echo "${env.GIT_COMMIT}"
               script {
                 gitCommit = "${env.GIT_COMMIT}"
