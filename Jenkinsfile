@@ -33,28 +33,28 @@ pipeline {
         stage('git repo') {
             steps {
                 sh "ls -a"
-                sh "rm -rf hello-world-sample-project-lolc"
+                sh "rm -rf application-01"
                 sh "git clone https://github.com/23-193-SLIIT-RP/application-01.git"
             }
         }
         stage('clean') {
             steps {
-                sh "mvn clean -f hello-world-sample-project-lolc"
+                sh "mvn clean -f application-01"
             }
         }
         stage('install') {
             steps {
-                sh "mvn install -f hello-world-sample-project-lolc"
+                sh "mvn install -f application-01"
             }
         }
         stage('test') {
             steps {
-                sh "mvn test -f hello-world-sample-project-lolc"
+                sh "mvn test -f application-01"
             }
         }
         stage('package') {
             steps {
-                sh "mvn package -f hello-world-sample-project-lolc"
+                sh "mvn package -f application-01"
             }
         }
     }
