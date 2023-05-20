@@ -31,6 +31,9 @@ pipeline {
         yamlFile 'KubernetesPodJava.yaml'
       }
     }
+    environment {
+      DOCKER_REGISTRY_CREDS = credentials('AZURE_CONTAINER_REGISTRY')
+    }
     stages {
         // stage('git repo') {
         //     steps {
