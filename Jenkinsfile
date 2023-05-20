@@ -68,7 +68,10 @@ pipeline {
                 gitCommit = "${env.GIT_COMMIT}"
               }
               echo "${gitCommit}"
-              def app_name = sh(returnStdout: true, script: "basename -s .git ${env.GIT_URL}").trim()
+              script {
+                    def repositoryName = sh(returnStdout: true, script: "basename -s .git ${env.GIT_URL}").trim()
+                    echo "Repository Name: ${repositoryName}"
+              }
                sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg GIT_COMMIT=$gitCommit --build-arg ARTIFACT=target/spring-boot-hello-world-lolc.jar --label org.opencontainers.image.revision=$gitCommit --destination=sharedregistry23.azurecr.io/$app_name:dev"
             }
         }
