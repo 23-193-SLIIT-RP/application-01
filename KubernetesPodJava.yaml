@@ -7,6 +7,10 @@ metadata:
     name: jenkins-slave-spring-boot   
 spec:
   containers:
+  - name: jnlp
+    image: jenkins/inbound-agent:4.3-4-jdk11
+    command: ["/bin/sh","-c"]
+    args: ["sleep 30; /usr/local/bin/jenkins-agent"]
   - name: maven-11
     image: maven:3.6.0-jdk-11	
     command:
