@@ -31,9 +31,6 @@ pipeline {
         yamlFile 'KubernetesPodJava.yaml'
       }
     }
-    environment { 
-        app_name = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0];
-    }
     stages {
         // stage('git repo') {
         //     steps {
@@ -71,6 +68,7 @@ pipeline {
                 gitCommit = "${env.GIT_COMMIT}"
               }
               echo "${gitCommit}"
+              def app_name = sh(returnStdout: true, script: "basename -s .git ${env.GIT_URL}").trim()
                sh "/kaniko/executor --dockerfile `pwd`/Dockerfile --context `pwd` --build-arg GIT_COMMIT=$gitCommit --build-arg ARTIFACT=target/spring-boot-hello-world-lolc.jar --label org.opencontainers.image.revision=$gitCommit --destination=sharedregistry23.azurecr.io/$app_name:dev"
             }
         }
