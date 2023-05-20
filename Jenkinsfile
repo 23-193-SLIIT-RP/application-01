@@ -59,7 +59,6 @@ pipeline {
                 sh "mvn package -f application-01"
             }
         }
-        stages {
         stage("Build & Push") {
           steps {
             container('kaniko') {
@@ -74,5 +73,4 @@ pipeline {
         }
       }
     }
-  }
 }
