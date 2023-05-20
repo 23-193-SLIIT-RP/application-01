@@ -34,7 +34,7 @@ pipeline {
             steps {
                 sh "ls -a"
                 sh "rm -rf hello-world-sample-project-lolc"
-                sh "git clone https://github.com/isurupathumherath/hello-world-sample-project-lolc.git"
+                sh "git clone https://github.com/23-193-SLIIT-RP/application-01.git"
             }
         }
         stage('clean') {
