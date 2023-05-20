@@ -32,13 +32,13 @@ pipeline {
       }
     }
     stages {
-        stage('git repo') {
-            steps {
-                sh "ls -a"
-                sh "rm -rf application-01"
-                sh "git clone https://github.com/23-193-SLIIT-RP/application-01.git"
-            }
-        }
+        // stage('git repo') {
+        //     steps {
+        //         sh "ls -a"
+        //         sh "rm -rf application-01"
+        //         sh "git clone https://github.com/23-193-SLIIT-RP/application-01.git"
+        //     }
+        // }
         stage('clean') {
             steps {
               container('maven') {
