@@ -26,7 +26,7 @@
 
 pipeline {
     agent {
-      any {
+      kubernetes {
         defaultContainer 'maven-11'
         yamlFile 'KubernetesPodJava.yaml'
       }
