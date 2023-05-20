@@ -27,7 +27,7 @@
 pipeline {
     agent {
       any {
-        defaultContainer 'maven'
+        defaultContainer 'maven-11'
         yamlFile 'KubernetesPodJava.yaml'
       }
     }
@@ -41,28 +41,28 @@ pipeline {
         // }
         stage('clean') {
             steps {
-              container('maven') {
+              container('maven-11') {
                 sh "mvn clean -f application-01"
               } 
             }
         }
         stage('install') {
             steps {
-              container('maven') {
+              container('maven-11') {
                 sh "mvn install -f application-01"
               }
             }
         }
         stage('test') {
             steps {
-              container('maven') {
+              container('maven-11') {
                 sh "mvn test -f application-01"
               }
             }
         }
         stage('package') {
             steps {
-              container('maven') {
+              container('maven-11') {
                 sh "mvn package -f application-01"
               }
             }
