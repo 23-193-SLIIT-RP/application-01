@@ -32,7 +32,7 @@ pipeline {
       }
     }
     environment { 
-        app_name = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0]
+        app_name = scm.getUserRemoteConfigs()[0].getUrl().tokenize('/').last().split("\\.")[0];
     }
     stages {
         // stage('git repo') {
