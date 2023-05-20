@@ -41,22 +41,30 @@ pipeline {
         }
         stage('clean') {
             steps {
+              container('maven') {
                 sh "mvn clean -f application-01"
+              } 
             }
         }
         stage('install') {
             steps {
+              container('maven') {
                 sh "mvn install -f application-01"
+              }
             }
         }
         stage('test') {
             steps {
+              container('maven') {
                 sh "mvn test -f application-01"
+              }
             }
         }
         stage('package') {
             steps {
+              container('maven') {
                 sh "mvn package -f application-01"
+              }
             }
         }
     }
