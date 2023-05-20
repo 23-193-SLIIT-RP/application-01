@@ -1,6 +1,6 @@
 pipeline {
     agent {
-      kubernetes {
+      any {
         defaultContainer 'maven'
         yamlFile 'KubernetesPodJava.yaml'
       }
